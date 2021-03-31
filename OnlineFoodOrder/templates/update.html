@@ -1,0 +1,54 @@
+{% load staticfiles %}
+<style type="text/css">
+        body{
+            text-align: center;
+            background-size: cover;
+            background-repeat:no-repeat;
+        }
+        a:link {
+  text-decoration: none;
+}
+</style>
+<body background="{% static 'images/onlineFodd2.jpg' %}">
+<br>
+<br>
+<center>
+    <table align="center" border="0">
+        <tr>
+
+            <th><h1><font color="green">{{ data2 }}</font></h1></th>
+            <th>
+                <img src="{% static 'images/request.jpg' %}" height="75" width="75">
+            </th>
+        </tr>
+
+    </table>
+    <br>
+    <br>
+    <br>
+    <form action="{% url 'updatedata' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for x in data %}
+        <table align="center" border="2" width="500">
+        <tr>
+                <th colspan="2"><font color="red">Food Id:<input type="text" value="{{x.Food_id }}" required name="fid" readonly></font></th>
+            </tr>
+            <tr>
+                <th colspan="2" ><font color="red">Food Type:<input type="radio" name="type" value="Veg" required>Veg
+                <input type="radio" name="type" value="Non-Veg" required>Non-Veg</font></th>
+            </tr>
+            <tr>
+                <th colspan="2"><font color="red">Food Name:<input type="text" value="{{x.Food_Name }}" required name="fn"></font></th>
+            </tr>
+                     <tr>
+                <th colspan="2"><font color="red">Food price:<input type="number"value="{{ x.Food_price }}" required name="fp"></font></th>
+            </tr>
+            <tr>
+                <th colspan="2" ><font color="red">Food Image:<input type="file"  required name="fi"><img src="{{ x.Food_image.url }}" height="40" width="40"></font></th>
+            </tr>
+                <tr>
+                    <th><button type="submit">Save</button> </th>
+                </tr></table>
+    {% endfor %}
+    <a href="{% url 'back1' %}"> <h3><font color="green"><img src="{% static 'images/back.png' %}" width="30" height="40">Back</font></h3></a>
+    </form></center>

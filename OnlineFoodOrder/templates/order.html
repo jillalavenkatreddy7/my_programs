@@ -1,0 +1,48 @@
+{% load staticfiles %}
+<html>
+<body  background="{% static 'images/onlineFodd2.jpg' %}">
+<style type="text/css">
+        body{
+            text-align: center;
+            background-size: cover;
+            background-repeat:no-repeat;
+        }
+    a:link{
+        text-decoration: none;
+    }
+</style>
+<center>
+    <br>
+    <br>
+<form action="{% url 'ordersave' %}" method="post">
+{% csrf_token %}
+{% if data %}
+<table align="center" border="2" width="700">
+
+<tr>
+    <th>{% if form %}{{ form.as_p }}{% endif %}
+    </th>
+</tr>
+
+<tr>
+    <th>Food_Name:<select name="type" required>
+        {% for x in data %}<option>{{ x.Food_Name }}</option>{% endfor %}
+    </select>
+    </th>
+</tr>
+    <tr><th>Food_price:<input type="number" value="{% for x in data %}{{ x.Food_price }}{% endfor %}" name="price" readonly></th></tr>
+<tr><th>Food_qty:<input type="number" name="qty" min="1" required></th></tr>
+    <tr>
+    <th><button type="submit">Place Order</button> </th>
+</tr>
+    {% else %}
+    <h1><font color="red">No foods available right now in our hotel</font> </h1>
+{% endif %}
+</table>
+</form>
+<a href="{% url 'backcustomer1' %}"> <h3><font color="green"><img src="{% static 'images/back.png' %}" width="30" height="40">Back</font></h3></a>
+{% for x in data2 %}
+    {{ x.Food_Type }}
+{% endfor %}
+</center>
+</body>

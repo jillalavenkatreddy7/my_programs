@@ -1,0 +1,59 @@
+{% load staticfiles %}
+<html>
+<body  background="{% static 'images/onlineFodd2.jpg' %}">
+<style type="text/css">
+        body{
+            text-align: center;
+            background-size: cover;
+            background-repeat:no-repeat;
+        }
+    a:link{
+        text-decoration: none;
+    }
+</style>
+<center>
+    <br>
+    <br>
+
+{% if food_data %}
+<table align="center" border="2" width="700">
+<tr>
+    <th>Food-Id</th>
+    <th>Food-Type</th>
+    <th>Food-Name</th>
+    <th>Food-Price</th>
+    <th>Food-Image</th>
+</tr>
+{% for x in food_data %}
+    <tr>
+    <th>{{ x.Food_id }}</th>
+    <th>{{ x.Food_Type }}</th>
+    <th>{{ x.Food_Name }}</th>
+    <th>{{ x.Food_price }}</th>
+    <th><a href="{{ x.Food_image.url }}"><img src="{{ x.Food_image.url }}" height="40" width="40"></a></th>
+    </tr>
+{% endfor %}
+</table>
+    {% else %}
+    <h3><font color="red">No Food Items To See</font> </h3>
+{% endif %}
+<br>
+<br>
+<table align="center" width="700" border="2">
+    <tr><th>
+    <a href="{% url 'order' %}"><h2><font color="red">Order Here</font></h2></a>
+    </th>
+        <th>
+        <a href=""><h2><font color="red">view orders</font></h2></a>
+    </th>
+    </tr>
+<tr><th colspan="2">
+<a href="{% url 'backcustomer1' %}"> <h3><font color="green"><img src="{% static 'images/back.png' %}" width="30" height="40">Back</font></h3></a>
+</th>
+</tr>
+</table>
+{% for x in messages %}
+<h1><font color="red">{{ x }}</font> </h1>
+{% endfor %}
+</center>
+</body>

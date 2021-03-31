@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<html>
+<body  background="{% static 'images/onlineFodd2.jpg' %}">
+<style type="text/css">
+        body{
+            text-align: center;
+            background-size: cover;
+            background-repeat:no-repeat;
+        }
+</style>
+<center>
+    <br>
+    <h1><font color="green">{{ data }}</font></h1>
+    <br>
+    <br>
+    <br>
+    <form action="{% url 'entry' %}" >
+    <table align="center" border="2" width="500">
+        <tr>
+            <th height="100"><button type="submit" name="who" value="Admin"><h1>Admin</h1></button></th>
+        </tr>
+        <tr>
+            <th height="100"><button type="submit" name="who" value="Customer"><h1>Customer</h1></button></th>
+        </tr>
+
+    </table>
+    </form>
+</center>
+
+</body>
+</html>

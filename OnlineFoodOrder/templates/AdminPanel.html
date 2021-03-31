@@ -1,0 +1,37 @@
+{% load staticfiles %}
+<html>
+<body  background="{% static 'images/onlineFodd2.jpg' %}">
+<style type="text/css">
+        body{
+            text-align: center;
+            background-size: cover;
+            background-repeat:no-repeat;
+
+        }
+    a:link {
+  text-decoration: none;
+}
+</style>
+<center>
+    <br>
+    <br>
+    <h1><font color="green">{{ data1 }}</font></h1>
+    <table align="center" width="500" border="2">
+        <tr>
+            <th height="100"><h1><a href="{% url 'addfood' %}"><font color="red">Add New Food</font></a></h1></th>
+        </tr>
+        <tr>
+            <th height="100"><h1><a href="{%url 'viewfoods'  %}"> <font color="red">View All Foods</font></a></h1></th>
+        </tr>
+        <tr>
+            <th height="100"><h1><a href=""><font color="red">View Customer Orders</font></a></h1></th>
+        </tr>
+        <form action="{% url 'logout1' %}" >
+        <th height="100"><button type="submit"><h1>Logout</h1></button></th>
+        </form>
+        </tr>
+    </table>
+</center>
+</body>
+</html>
+

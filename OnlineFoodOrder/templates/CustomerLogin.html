@@ -1,0 +1,38 @@
+{% load staticfiles %}
+<html>
+<body  background="{% static 'images/onlineFodd2.jpg' %}">
+<style type="text/css">
+        body{
+            text-align: center;
+            background-size: cover;
+            background-repeat:no-repeat;
+        }
+    a:link{
+        text-decoration: none;
+    }
+</style>
+<center>
+    <br>
+    <br>
+    <h1><font color="green">{{ data }}</font></h1>
+    <form action={% url 'customerlogin' %} method="post">
+        {% csrf_token %}
+<table align="center" border="2" width="500">
+    <tr>
+        <th height="100"><h2><font color="red">Username:</font><input type="text" placeholder="username" required name="uc" ></h2></th>
+    </tr>
+    <tr>
+        <th height="100"><h2><font color="red">Password:</font><input type="password" placeholder="password" required name="pc" ></h2></th>
+    </tr>
+        <tr>
+            <th height="100"><button type="submit"><h2>Login</h2></button> </th>
+    </tr>
+    <tr><th width="100"><a href="{% url 'newcustomer' %}"><h2><font color="lime">New Customer Registration</font></h2></a></th></tr>
+</table>
+    </form>
+    {% for x in messages %}
+    <h2><font color="lime">{{ x }}</font> </h2>
+    {% endfor %}
+</center>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% load staticfiles %}
+<html>
+<body  background="{% static 'images/onlineFodd2.jpg' %}">
+<style type="text/css">
+        body{
+            text-align: center;
+            background-size: cover;
+            background-repeat:no-repeat;
+        }
+    a:link{
+        text-decoration: none;
+    }
+</style>
+<center>
+    <br>
+    <br>
+    <h1><font color="green">{% if data4.customer_name %}Welcome to Mr/Mrs {{ data4.customer_name }}{% endif %}</font></h1>
+<br>
+    <br>
+
+    <table align="center" border="2" width="500">
+    <tr>
+        <th>
+            <a href="{% url 'customerViewFoods' %}"><h2><font color="red">View Food Items In Hotel</font></h2></a>
+        </th>
+    </tr>
+
+        <tr>
+            <th><a href="{% url 'logout' %}"> <h3><font color="lime">Logout</font></h3></a> </th>
+    </tr>
+
+</table>
+</center>
+</body>
+</html>
